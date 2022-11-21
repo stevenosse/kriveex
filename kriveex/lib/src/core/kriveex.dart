@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kriveex/src/core/theme/theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:kriveex/src/features/home/logic/qr_file_transfer_bloc.dart';
-import 'package:kriveex/src/features/home/ui/home_screen.dart';
+import 'package:kriveex/src/features/share_file/logic/qr_file_receiver/qr_file_receiver_bloc.dart';
+import 'package:kriveex/src/features/share_file/logic/qr_file_transfer/qr_file_transfer_bloc.dart';
+import 'package:kriveex/src/features/share_file/ui/share_file_home_screen.dart';
 
 import 'i18n/l10n.dart';
 
@@ -15,6 +16,7 @@ class Kriveex extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => QrFileTransferBloc()),
+        BlocProvider(create: (_) => QrFileReceiverBloc()),
       ],
       child: MaterialApp(
         title: 'Kriveex',
@@ -22,7 +24,7 @@ class Kriveex extends StatelessWidget {
         darkTheme: AppTheme.darkTheme,
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.light, // TODO: remove
-        home: const HomeScreen(),
+        home: const ShareFileHomeScreen(),
         localizationsDelegates: const [
           I18n.delegate,
           GlobalMaterialLocalizations.delegate,

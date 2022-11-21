@@ -1,14 +1,13 @@
-import 'package:collection/collection.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kriveex/src/features/home/logic/qr_file_transfer_event.dart';
-import 'package:kriveex/src/features/home/logic/qr_file_transfer_state.dart';
+import 'package:kriveex/src/features/share_file/logic/qr_file_transfer/qr_file_transfer_event.dart';
+import 'package:kriveex/src/features/share_file/logic/qr_file_transfer/qr_file_transfer_state.dart';
 import 'package:kriveex/src/locator.dart';
 import 'package:kriveex/src/shared/data/file_chunk/file_chunk.dart';
 import 'package:kriveex/src/shared/data/transfer_metadata/transfer_metadata.dart';
 import 'package:kriveex/src/shared/services/qr_file_transfer_service.dart';
 
-const Duration _perFrameDelay = Duration(milliseconds: 150);
+const Duration _perFrameDelay = Duration(seconds: 2);
 
 class QrFileTransferBloc extends Bloc<QrFileTransferEvent, QrFileTransferState> {
   final QrFileTransferService qrFileTransferService;
@@ -43,7 +42,7 @@ class QrFileTransferBloc extends Bloc<QrFileTransferEvent, QrFileTransferState> 
     for (int index = 0; index < event.rawChunks.length; index++) {
       final rawChunk = event.rawChunks.elementAt(index);
       final TransferMetadata transferMetadata = TransferMetadata(
-        progress: (index / event.rawChunks.length) * 100,
+        progress: index == event.rawChunks.length - 1 ? 100 : (index / event.rawChunks.length) * 100,
         totalChunks: event.rawChunks.length,
         fileName: event.file.name,
         fileExtension: event.file.extension ?? '',
@@ -54,8 +53,8 @@ class QrFileTransferBloc extends Bloc<QrFileTransferEvent, QrFileTransferState> 
         index: index,
       );
 
-      await Future.delayed(_perFrameDelay);
       add(UpdateChunkEvent(fileChunk: chunk));
+      await Future.delayed(_perFrameDelay);
     }
   }
 
