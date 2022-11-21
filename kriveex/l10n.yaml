@@ -1,0 +1,4 @@
+arb-dir: lib/src/core/i18n/l10n
+output-localization-file: i18n.dart
+output-class: I18n
+template-arb-file: intl_en.arb
