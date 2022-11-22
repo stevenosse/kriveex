@@ -9,14 +9,14 @@ import 'package:kriveex/src/features/share_file/logic/qr_file_transfer/qr_file_t
 import 'package:kriveex/src/features/share_file/logic/qr_file_transfer/qr_file_transfer_state.dart';
 import 'package:kriveex/src/features/share_file/ui/receive_file_screen.dart';
 
-class ShareFileHomeScreen extends StatefulWidget {
-  const ShareFileHomeScreen({Key? key}) : super(key: key);
+class ShareFileScreen extends StatefulWidget {
+  const ShareFileScreen({Key? key}) : super(key: key);
 
   @override
-  State<ShareFileHomeScreen> createState() => _ShareFileHomeScreenState();
+  State<ShareFileScreen> createState() => _ShareFileScreenState();
 }
 
-class _ShareFileHomeScreenState extends State<ShareFileHomeScreen> {
+class _ShareFileScreenState extends State<ShareFileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +29,9 @@ class _ShareFileHomeScreenState extends State<ShareFileHomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text('Commencez à envoyer des fichiers'),
+            Text('Envoyer un fichier', style: Theme.of(context).textTheme.headline2),
+            const SizedBox(height: Dimens.spacing),
+            const Text('Sélectionner une action'),
             const SizedBox(height: Dimens.doubleSpacing),
             BlocBuilder<QrFileTransferBloc, QrFileTransferState>(
               builder: (context, state) {
@@ -37,7 +39,7 @@ class _ShareFileHomeScreenState extends State<ShareFileHomeScreen> {
                   transferReady: (rawChunks, file) {
                     return Column(
                       children: [
-                        Text('Ready to transfer ${file.name}'),
+                        Text('Prêt à démarrer l\'envoi ${file.name}'),
                         const SizedBox(height: Dimens.spacing),
                         ElevatedButton(
                           onPressed: () {
@@ -45,7 +47,7 @@ class _ShareFileHomeScreenState extends State<ShareFileHomeScreen> {
                                 .read<QrFileTransferBloc>()
                                 .add(StartTransferEvent(rawChunks: rawChunks, file: file));
                           },
-                          child: const Text('Start transfer'),
+                          child: const Text('Démarrer l\'envoi'),
                         ),
                       ],
                     );
@@ -54,8 +56,8 @@ class _ShareFileHomeScreenState extends State<ShareFileHomeScreen> {
                     return MouseRegion(
                       cursor: SystemMouseCursors.none,
                       child: SizedBox(
-                        width: 500,
-                        height: 500,
+                        width: MediaQuery.of(context).size.width * .4,
+                        height: MediaQuery.of(context).size.width * .4,
                         child: BarcodeWidget(
                           data: jsonEncode(chunk.toJson()),
                           barcode: Barcode.qrCode(),

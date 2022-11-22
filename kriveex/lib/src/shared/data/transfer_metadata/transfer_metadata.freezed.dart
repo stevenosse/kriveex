@@ -20,9 +20,12 @@ TransferMetadata _$TransferMetadataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TransferMetadata {
+  @JsonKey(name: 'pg')
   double get progress => throw _privateConstructorUsedError;
-  int get totalChunks => throw _privateConstructorUsedError;
-  String get fileName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tot')
+  int get total => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'ext')
   String get fileExtension => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,10 +41,10 @@ abstract class $TransferMetadataCopyWith<$Res> {
       _$TransferMetadataCopyWithImpl<$Res, TransferMetadata>;
   @useResult
   $Res call(
-      {double progress,
-      int totalChunks,
-      String fileName,
-      String fileExtension});
+      {@JsonKey(name: 'pg') double progress,
+      @JsonKey(name: 'tot') int total,
+      String name,
+      @JsonKey(name: 'ext') String fileExtension});
 }
 
 /// @nodoc
@@ -58,8 +61,8 @@ class _$TransferMetadataCopyWithImpl<$Res, $Val extends TransferMetadata>
   @override
   $Res call({
     Object? progress = null,
-    Object? totalChunks = null,
-    Object? fileName = null,
+    Object? total = null,
+    Object? name = null,
     Object? fileExtension = null,
   }) {
     return _then(_value.copyWith(
@@ -67,13 +70,13 @@ class _$TransferMetadataCopyWithImpl<$Res, $Val extends TransferMetadata>
           ? _value.progress
           : progress // ignore: cast_nullable_to_non_nullable
               as double,
-      totalChunks: null == totalChunks
-          ? _value.totalChunks
-          : totalChunks // ignore: cast_nullable_to_non_nullable
+      total: null == total
+          ? _value.total
+          : total // ignore: cast_nullable_to_non_nullable
               as int,
-      fileName: null == fileName
-          ? _value.fileName
-          : fileName // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       fileExtension: null == fileExtension
           ? _value.fileExtension
@@ -92,10 +95,10 @@ abstract class _$$_TransferMetadataCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {double progress,
-      int totalChunks,
-      String fileName,
-      String fileExtension});
+      {@JsonKey(name: 'pg') double progress,
+      @JsonKey(name: 'tot') int total,
+      String name,
+      @JsonKey(name: 'ext') String fileExtension});
 }
 
 /// @nodoc
@@ -110,8 +113,8 @@ class __$$_TransferMetadataCopyWithImpl<$Res>
   @override
   $Res call({
     Object? progress = null,
-    Object? totalChunks = null,
-    Object? fileName = null,
+    Object? total = null,
+    Object? name = null,
     Object? fileExtension = null,
   }) {
     return _then(_$_TransferMetadata(
@@ -119,13 +122,13 @@ class __$$_TransferMetadataCopyWithImpl<$Res>
           ? _value.progress
           : progress // ignore: cast_nullable_to_non_nullable
               as double,
-      totalChunks: null == totalChunks
-          ? _value.totalChunks
-          : totalChunks // ignore: cast_nullable_to_non_nullable
+      total: null == total
+          ? _value.total
+          : total // ignore: cast_nullable_to_non_nullable
               as int,
-      fileName: null == fileName
-          ? _value.fileName
-          : fileName // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       fileExtension: null == fileExtension
           ? _value.fileExtension
@@ -139,26 +142,29 @@ class __$$_TransferMetadataCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TransferMetadata implements _TransferMetadata {
   _$_TransferMetadata(
-      {required this.progress,
-      required this.totalChunks,
-      required this.fileName,
-      required this.fileExtension});
+      {@JsonKey(name: 'pg') required this.progress,
+      @JsonKey(name: 'tot') required this.total,
+      required this.name,
+      @JsonKey(name: 'ext') required this.fileExtension});
 
   factory _$_TransferMetadata.fromJson(Map<String, dynamic> json) =>
       _$$_TransferMetadataFromJson(json);
 
   @override
+  @JsonKey(name: 'pg')
   final double progress;
   @override
-  final int totalChunks;
+  @JsonKey(name: 'tot')
+  final int total;
   @override
-  final String fileName;
+  final String name;
   @override
+  @JsonKey(name: 'ext')
   final String fileExtension;
 
   @override
   String toString() {
-    return 'TransferMetadata(progress: $progress, totalChunks: $totalChunks, fileName: $fileName, fileExtension: $fileExtension)';
+    return 'TransferMetadata(progress: $progress, total: $total, name: $name, fileExtension: $fileExtension)';
   }
 
   @override
@@ -168,10 +174,8 @@ class _$_TransferMetadata implements _TransferMetadata {
             other is _$_TransferMetadata &&
             (identical(other.progress, progress) ||
                 other.progress == progress) &&
-            (identical(other.totalChunks, totalChunks) ||
-                other.totalChunks == totalChunks) &&
-            (identical(other.fileName, fileName) ||
-                other.fileName == fileName) &&
+            (identical(other.total, total) || other.total == total) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.fileExtension, fileExtension) ||
                 other.fileExtension == fileExtension));
   }
@@ -179,7 +183,7 @@ class _$_TransferMetadata implements _TransferMetadata {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, progress, totalChunks, fileName, fileExtension);
+      Object.hash(runtimeType, progress, total, name, fileExtension);
 
   @JsonKey(ignore: true)
   @override
@@ -197,21 +201,25 @@ class _$_TransferMetadata implements _TransferMetadata {
 
 abstract class _TransferMetadata implements TransferMetadata {
   factory _TransferMetadata(
-      {required final double progress,
-      required final int totalChunks,
-      required final String fileName,
-      required final String fileExtension}) = _$_TransferMetadata;
+          {@JsonKey(name: 'pg') required final double progress,
+          @JsonKey(name: 'tot') required final int total,
+          required final String name,
+          @JsonKey(name: 'ext') required final String fileExtension}) =
+      _$_TransferMetadata;
 
   factory _TransferMetadata.fromJson(Map<String, dynamic> json) =
       _$_TransferMetadata.fromJson;
 
   @override
+  @JsonKey(name: 'pg')
   double get progress;
   @override
-  int get totalChunks;
+  @JsonKey(name: 'tot')
+  int get total;
   @override
-  String get fileName;
+  String get name;
   @override
+  @JsonKey(name: 'ext')
   String get fileExtension;
   @override
   @JsonKey(ignore: true)

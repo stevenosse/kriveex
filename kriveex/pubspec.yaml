@@ -25,6 +25,7 @@ dependencies:
   collection: ^1.16.0
   equatable: ^2.0.5
   barcode_widget: ^2.0.3
+  flutter_file_saver: ^0.6.1+1
 
 dev_dependencies:
   flutter_test:

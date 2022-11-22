@@ -20,21 +20,28 @@ mixin _$QrFileReceiverState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<FileChunk> chunks) chunkReceived,
-    required TResult Function(PlatformFile file) transferFinished,
+    required TResult Function(
+            String? path, PlatformFile file, List<FileChunk> chunks)
+        transferFinished,
+    required TResult Function(List<FileChunk> chunks) transferFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<FileChunk> chunks)? chunkReceived,
-    TResult? Function(PlatformFile file)? transferFinished,
+    TResult? Function(String? path, PlatformFile file, List<FileChunk> chunks)?
+        transferFinished,
+    TResult? Function(List<FileChunk> chunks)? transferFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<FileChunk> chunks)? chunkReceived,
-    TResult Function(PlatformFile file)? transferFinished,
+    TResult Function(String? path, PlatformFile file, List<FileChunk> chunks)?
+        transferFinished,
+    TResult Function(List<FileChunk> chunks)? transferFailed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +50,7 @@ mixin _$QrFileReceiverState {
     required TResult Function(_QrFileReceiverState value) initial,
     required TResult Function(_ChunkReceived value) chunkReceived,
     required TResult Function(_TransferFinished value) transferFinished,
+    required TResult Function(_TransferFailed value) transferFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +58,7 @@ mixin _$QrFileReceiverState {
     TResult? Function(_QrFileReceiverState value)? initial,
     TResult? Function(_ChunkReceived value)? chunkReceived,
     TResult? Function(_TransferFinished value)? transferFinished,
+    TResult? Function(_TransferFailed value)? transferFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +66,7 @@ mixin _$QrFileReceiverState {
     TResult Function(_QrFileReceiverState value)? initial,
     TResult Function(_ChunkReceived value)? chunkReceived,
     TResult Function(_TransferFinished value)? transferFinished,
+    TResult Function(_TransferFailed value)? transferFailed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,7 +130,10 @@ class _$_QrFileReceiverState implements _QrFileReceiverState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<FileChunk> chunks) chunkReceived,
-    required TResult Function(PlatformFile file) transferFinished,
+    required TResult Function(
+            String? path, PlatformFile file, List<FileChunk> chunks)
+        transferFinished,
+    required TResult Function(List<FileChunk> chunks) transferFailed,
   }) {
     return initial();
   }
@@ -130,7 +143,9 @@ class _$_QrFileReceiverState implements _QrFileReceiverState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<FileChunk> chunks)? chunkReceived,
-    TResult? Function(PlatformFile file)? transferFinished,
+    TResult? Function(String? path, PlatformFile file, List<FileChunk> chunks)?
+        transferFinished,
+    TResult? Function(List<FileChunk> chunks)? transferFailed,
   }) {
     return initial?.call();
   }
@@ -140,7 +155,9 @@ class _$_QrFileReceiverState implements _QrFileReceiverState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<FileChunk> chunks)? chunkReceived,
-    TResult Function(PlatformFile file)? transferFinished,
+    TResult Function(String? path, PlatformFile file, List<FileChunk> chunks)?
+        transferFinished,
+    TResult Function(List<FileChunk> chunks)? transferFailed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -155,6 +172,7 @@ class _$_QrFileReceiverState implements _QrFileReceiverState {
     required TResult Function(_QrFileReceiverState value) initial,
     required TResult Function(_ChunkReceived value) chunkReceived,
     required TResult Function(_TransferFinished value) transferFinished,
+    required TResult Function(_TransferFailed value) transferFailed,
   }) {
     return initial(this);
   }
@@ -165,6 +183,7 @@ class _$_QrFileReceiverState implements _QrFileReceiverState {
     TResult? Function(_QrFileReceiverState value)? initial,
     TResult? Function(_ChunkReceived value)? chunkReceived,
     TResult? Function(_TransferFinished value)? transferFinished,
+    TResult? Function(_TransferFailed value)? transferFailed,
   }) {
     return initial?.call(this);
   }
@@ -175,6 +194,7 @@ class _$_QrFileReceiverState implements _QrFileReceiverState {
     TResult Function(_QrFileReceiverState value)? initial,
     TResult Function(_ChunkReceived value)? chunkReceived,
     TResult Function(_TransferFinished value)? transferFinished,
+    TResult Function(_TransferFailed value)? transferFailed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -259,7 +279,10 @@ class _$_ChunkReceived implements _ChunkReceived {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<FileChunk> chunks) chunkReceived,
-    required TResult Function(PlatformFile file) transferFinished,
+    required TResult Function(
+            String? path, PlatformFile file, List<FileChunk> chunks)
+        transferFinished,
+    required TResult Function(List<FileChunk> chunks) transferFailed,
   }) {
     return chunkReceived(chunks);
   }
@@ -269,7 +292,9 @@ class _$_ChunkReceived implements _ChunkReceived {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<FileChunk> chunks)? chunkReceived,
-    TResult? Function(PlatformFile file)? transferFinished,
+    TResult? Function(String? path, PlatformFile file, List<FileChunk> chunks)?
+        transferFinished,
+    TResult? Function(List<FileChunk> chunks)? transferFailed,
   }) {
     return chunkReceived?.call(chunks);
   }
@@ -279,7 +304,9 @@ class _$_ChunkReceived implements _ChunkReceived {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<FileChunk> chunks)? chunkReceived,
-    TResult Function(PlatformFile file)? transferFinished,
+    TResult Function(String? path, PlatformFile file, List<FileChunk> chunks)?
+        transferFinished,
+    TResult Function(List<FileChunk> chunks)? transferFailed,
     required TResult orElse(),
   }) {
     if (chunkReceived != null) {
@@ -294,6 +321,7 @@ class _$_ChunkReceived implements _ChunkReceived {
     required TResult Function(_QrFileReceiverState value) initial,
     required TResult Function(_ChunkReceived value) chunkReceived,
     required TResult Function(_TransferFinished value) transferFinished,
+    required TResult Function(_TransferFailed value) transferFailed,
   }) {
     return chunkReceived(this);
   }
@@ -304,6 +332,7 @@ class _$_ChunkReceived implements _ChunkReceived {
     TResult? Function(_QrFileReceiverState value)? initial,
     TResult? Function(_ChunkReceived value)? chunkReceived,
     TResult? Function(_TransferFinished value)? transferFinished,
+    TResult? Function(_TransferFailed value)? transferFailed,
   }) {
     return chunkReceived?.call(this);
   }
@@ -314,6 +343,7 @@ class _$_ChunkReceived implements _ChunkReceived {
     TResult Function(_QrFileReceiverState value)? initial,
     TResult Function(_ChunkReceived value)? chunkReceived,
     TResult Function(_TransferFinished value)? transferFinished,
+    TResult Function(_TransferFailed value)? transferFailed,
     required TResult orElse(),
   }) {
     if (chunkReceived != null) {
@@ -339,7 +369,7 @@ abstract class _$$_TransferFinishedCopyWith<$Res> {
           _$_TransferFinished value, $Res Function(_$_TransferFinished) then) =
       __$$_TransferFinishedCopyWithImpl<$Res>;
   @useResult
-  $Res call({PlatformFile file});
+  $Res call({String? path, PlatformFile file, List<FileChunk> chunks});
 }
 
 /// @nodoc
@@ -353,13 +383,23 @@ class __$$_TransferFinishedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? path = freezed,
     Object? file = null,
+    Object? chunks = null,
   }) {
     return _then(_$_TransferFinished(
+      path: freezed == path
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String?,
       file: null == file
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
               as PlatformFile,
+      chunks: null == chunks
+          ? _value._chunks
+          : chunks // ignore: cast_nullable_to_non_nullable
+              as List<FileChunk>,
     ));
   }
 }
@@ -367,14 +407,24 @@ class __$$_TransferFinishedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TransferFinished implements _TransferFinished {
-  _$_TransferFinished({required this.file});
+  _$_TransferFinished(
+      {this.path, required this.file, required final List<FileChunk> chunks})
+      : _chunks = chunks;
 
   @override
+  final String? path;
+  @override
   final PlatformFile file;
+  final List<FileChunk> _chunks;
+  @override
+  List<FileChunk> get chunks {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_chunks);
+  }
 
   @override
   String toString() {
-    return 'QrFileReceiverState.transferFinished(file: $file)';
+    return 'QrFileReceiverState.transferFinished(path: $path, file: $file, chunks: $chunks)';
   }
 
   @override
@@ -382,11 +432,14 @@ class _$_TransferFinished implements _TransferFinished {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TransferFinished &&
-            (identical(other.file, file) || other.file == file));
+            (identical(other.path, path) || other.path == path) &&
+            (identical(other.file, file) || other.file == file) &&
+            const DeepCollectionEquality().equals(other._chunks, _chunks));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, file);
+  int get hashCode => Object.hash(
+      runtimeType, path, file, const DeepCollectionEquality().hash(_chunks));
 
   @JsonKey(ignore: true)
   @override
@@ -399,9 +452,12 @@ class _$_TransferFinished implements _TransferFinished {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<FileChunk> chunks) chunkReceived,
-    required TResult Function(PlatformFile file) transferFinished,
+    required TResult Function(
+            String? path, PlatformFile file, List<FileChunk> chunks)
+        transferFinished,
+    required TResult Function(List<FileChunk> chunks) transferFailed,
   }) {
-    return transferFinished(file);
+    return transferFinished(path, file, chunks);
   }
 
   @override
@@ -409,9 +465,11 @@ class _$_TransferFinished implements _TransferFinished {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<FileChunk> chunks)? chunkReceived,
-    TResult? Function(PlatformFile file)? transferFinished,
+    TResult? Function(String? path, PlatformFile file, List<FileChunk> chunks)?
+        transferFinished,
+    TResult? Function(List<FileChunk> chunks)? transferFailed,
   }) {
-    return transferFinished?.call(file);
+    return transferFinished?.call(path, file, chunks);
   }
 
   @override
@@ -419,11 +477,13 @@ class _$_TransferFinished implements _TransferFinished {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<FileChunk> chunks)? chunkReceived,
-    TResult Function(PlatformFile file)? transferFinished,
+    TResult Function(String? path, PlatformFile file, List<FileChunk> chunks)?
+        transferFinished,
+    TResult Function(List<FileChunk> chunks)? transferFailed,
     required TResult orElse(),
   }) {
     if (transferFinished != null) {
-      return transferFinished(file);
+      return transferFinished(path, file, chunks);
     }
     return orElse();
   }
@@ -434,6 +494,7 @@ class _$_TransferFinished implements _TransferFinished {
     required TResult Function(_QrFileReceiverState value) initial,
     required TResult Function(_ChunkReceived value) chunkReceived,
     required TResult Function(_TransferFinished value) transferFinished,
+    required TResult Function(_TransferFailed value) transferFailed,
   }) {
     return transferFinished(this);
   }
@@ -444,6 +505,7 @@ class _$_TransferFinished implements _TransferFinished {
     TResult? Function(_QrFileReceiverState value)? initial,
     TResult? Function(_ChunkReceived value)? chunkReceived,
     TResult? Function(_TransferFinished value)? transferFinished,
+    TResult? Function(_TransferFailed value)? transferFailed,
   }) {
     return transferFinished?.call(this);
   }
@@ -454,6 +516,7 @@ class _$_TransferFinished implements _TransferFinished {
     TResult Function(_QrFileReceiverState value)? initial,
     TResult Function(_ChunkReceived value)? chunkReceived,
     TResult Function(_TransferFinished value)? transferFinished,
+    TResult Function(_TransferFailed value)? transferFailed,
     required TResult orElse(),
   }) {
     if (transferFinished != null) {
@@ -464,11 +527,170 @@ class _$_TransferFinished implements _TransferFinished {
 }
 
 abstract class _TransferFinished implements QrFileReceiverState {
-  factory _TransferFinished({required final PlatformFile file}) =
-      _$_TransferFinished;
+  factory _TransferFinished(
+      {final String? path,
+      required final PlatformFile file,
+      required final List<FileChunk> chunks}) = _$_TransferFinished;
 
+  String? get path;
   PlatformFile get file;
+  List<FileChunk> get chunks;
   @JsonKey(ignore: true)
   _$$_TransferFinishedCopyWith<_$_TransferFinished> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_TransferFailedCopyWith<$Res> {
+  factory _$$_TransferFailedCopyWith(
+          _$_TransferFailed value, $Res Function(_$_TransferFailed) then) =
+      __$$_TransferFailedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<FileChunk> chunks});
+}
+
+/// @nodoc
+class __$$_TransferFailedCopyWithImpl<$Res>
+    extends _$QrFileReceiverStateCopyWithImpl<$Res, _$_TransferFailed>
+    implements _$$_TransferFailedCopyWith<$Res> {
+  __$$_TransferFailedCopyWithImpl(
+      _$_TransferFailed _value, $Res Function(_$_TransferFailed) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? chunks = null,
+  }) {
+    return _then(_$_TransferFailed(
+      chunks: null == chunks
+          ? _value._chunks
+          : chunks // ignore: cast_nullable_to_non_nullable
+              as List<FileChunk>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_TransferFailed implements _TransferFailed {
+  _$_TransferFailed({required final List<FileChunk> chunks}) : _chunks = chunks;
+
+  final List<FileChunk> _chunks;
+  @override
+  List<FileChunk> get chunks {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_chunks);
+  }
+
+  @override
+  String toString() {
+    return 'QrFileReceiverState.transferFailed(chunks: $chunks)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TransferFailed &&
+            const DeepCollectionEquality().equals(other._chunks, _chunks));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_chunks));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TransferFailedCopyWith<_$_TransferFailed> get copyWith =>
+      __$$_TransferFailedCopyWithImpl<_$_TransferFailed>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(List<FileChunk> chunks) chunkReceived,
+    required TResult Function(
+            String? path, PlatformFile file, List<FileChunk> chunks)
+        transferFinished,
+    required TResult Function(List<FileChunk> chunks) transferFailed,
+  }) {
+    return transferFailed(chunks);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(List<FileChunk> chunks)? chunkReceived,
+    TResult? Function(String? path, PlatformFile file, List<FileChunk> chunks)?
+        transferFinished,
+    TResult? Function(List<FileChunk> chunks)? transferFailed,
+  }) {
+    return transferFailed?.call(chunks);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<FileChunk> chunks)? chunkReceived,
+    TResult Function(String? path, PlatformFile file, List<FileChunk> chunks)?
+        transferFinished,
+    TResult Function(List<FileChunk> chunks)? transferFailed,
+    required TResult orElse(),
+  }) {
+    if (transferFailed != null) {
+      return transferFailed(chunks);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_QrFileReceiverState value) initial,
+    required TResult Function(_ChunkReceived value) chunkReceived,
+    required TResult Function(_TransferFinished value) transferFinished,
+    required TResult Function(_TransferFailed value) transferFailed,
+  }) {
+    return transferFailed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_QrFileReceiverState value)? initial,
+    TResult? Function(_ChunkReceived value)? chunkReceived,
+    TResult? Function(_TransferFinished value)? transferFinished,
+    TResult? Function(_TransferFailed value)? transferFailed,
+  }) {
+    return transferFailed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_QrFileReceiverState value)? initial,
+    TResult Function(_ChunkReceived value)? chunkReceived,
+    TResult Function(_TransferFinished value)? transferFinished,
+    TResult Function(_TransferFailed value)? transferFailed,
+    required TResult orElse(),
+  }) {
+    if (transferFailed != null) {
+      return transferFailed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TransferFailed implements QrFileReceiverState {
+  factory _TransferFailed({required final List<FileChunk> chunks}) =
+      _$_TransferFailed;
+
+  List<FileChunk> get chunks;
+  @JsonKey(ignore: true)
+  _$$_TransferFailedCopyWith<_$_TransferFailed> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -8,16 +8,16 @@ part of 'transfer_metadata.dart';
 
 _$_TransferMetadata _$$_TransferMetadataFromJson(Map<String, dynamic> json) =>
     _$_TransferMetadata(
-      progress: (json['progress'] as num).toDouble(),
-      totalChunks: json['totalChunks'] as int,
-      fileName: json['fileName'] as String,
-      fileExtension: json['fileExtension'] as String,
+      progress: (json['pg'] as num).toDouble(),
+      total: json['tot'] as int,
+      name: json['name'] as String,
+      fileExtension: json['ext'] as String,
     );
 
 Map<String, dynamic> _$$_TransferMetadataToJson(_$_TransferMetadata instance) =>
     <String, dynamic>{
-      'progress': instance.progress,
-      'totalChunks': instance.totalChunks,
-      'fileName': instance.fileName,
-      'fileExtension': instance.fileExtension,
+      'pg': instance.progress,
+      'tot': instance.total,
+      'name': instance.name,
+      'ext': instance.fileExtension,
     };

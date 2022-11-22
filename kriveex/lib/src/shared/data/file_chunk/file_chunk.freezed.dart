@@ -20,8 +20,11 @@ FileChunk _$FileChunkFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FileChunk {
-  TransferMetadata get transferMetadata => throw _privateConstructorUsedError;
+  @JsonKey(name: 'mtd')
+  TransferMetadata get metadata => throw _privateConstructorUsedError;
+  @JsonKey(name: 'ctn')
   String get content => throw _privateConstructorUsedError;
+  @JsonKey(name: 'i')
   int get index => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,9 +38,12 @@ abstract class $FileChunkCopyWith<$Res> {
   factory $FileChunkCopyWith(FileChunk value, $Res Function(FileChunk) then) =
       _$FileChunkCopyWithImpl<$Res, FileChunk>;
   @useResult
-  $Res call({TransferMetadata transferMetadata, String content, int index});
+  $Res call(
+      {@JsonKey(name: 'mtd') TransferMetadata metadata,
+      @JsonKey(name: 'ctn') String content,
+      @JsonKey(name: 'i') int index});
 
-  $TransferMetadataCopyWith<$Res> get transferMetadata;
+  $TransferMetadataCopyWith<$Res> get metadata;
 }
 
 /// @nodoc
@@ -53,14 +59,14 @@ class _$FileChunkCopyWithImpl<$Res, $Val extends FileChunk>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? transferMetadata = null,
+    Object? metadata = null,
     Object? content = null,
     Object? index = null,
   }) {
     return _then(_value.copyWith(
-      transferMetadata: null == transferMetadata
-          ? _value.transferMetadata
-          : transferMetadata // ignore: cast_nullable_to_non_nullable
+      metadata: null == metadata
+          ? _value.metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
               as TransferMetadata,
       content: null == content
           ? _value.content
@@ -75,9 +81,9 @@ class _$FileChunkCopyWithImpl<$Res, $Val extends FileChunk>
 
   @override
   @pragma('vm:prefer-inline')
-  $TransferMetadataCopyWith<$Res> get transferMetadata {
-    return $TransferMetadataCopyWith<$Res>(_value.transferMetadata, (value) {
-      return _then(_value.copyWith(transferMetadata: value) as $Val);
+  $TransferMetadataCopyWith<$Res> get metadata {
+    return $TransferMetadataCopyWith<$Res>(_value.metadata, (value) {
+      return _then(_value.copyWith(metadata: value) as $Val);
     });
   }
 }
@@ -89,10 +95,13 @@ abstract class _$$_FileChunkCopyWith<$Res> implements $FileChunkCopyWith<$Res> {
       __$$_FileChunkCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({TransferMetadata transferMetadata, String content, int index});
+  $Res call(
+      {@JsonKey(name: 'mtd') TransferMetadata metadata,
+      @JsonKey(name: 'ctn') String content,
+      @JsonKey(name: 'i') int index});
 
   @override
-  $TransferMetadataCopyWith<$Res> get transferMetadata;
+  $TransferMetadataCopyWith<$Res> get metadata;
 }
 
 /// @nodoc
@@ -106,14 +115,14 @@ class __$$_FileChunkCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? transferMetadata = null,
+    Object? metadata = null,
     Object? content = null,
     Object? index = null,
   }) {
     return _then(_$_FileChunk(
-      transferMetadata: null == transferMetadata
-          ? _value.transferMetadata
-          : transferMetadata // ignore: cast_nullable_to_non_nullable
+      metadata: null == metadata
+          ? _value.metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
               as TransferMetadata,
       content: null == content
           ? _value.content
@@ -131,23 +140,26 @@ class __$$_FileChunkCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_FileChunk implements _FileChunk {
   _$_FileChunk(
-      {required this.transferMetadata,
-      required this.content,
-      required this.index});
+      {@JsonKey(name: 'mtd') required this.metadata,
+      @JsonKey(name: 'ctn') required this.content,
+      @JsonKey(name: 'i') required this.index});
 
   factory _$_FileChunk.fromJson(Map<String, dynamic> json) =>
       _$$_FileChunkFromJson(json);
 
   @override
-  final TransferMetadata transferMetadata;
+  @JsonKey(name: 'mtd')
+  final TransferMetadata metadata;
   @override
+  @JsonKey(name: 'ctn')
   final String content;
   @override
+  @JsonKey(name: 'i')
   final int index;
 
   @override
   String toString() {
-    return 'FileChunk(transferMetadata: $transferMetadata, content: $content, index: $index)';
+    return 'FileChunk(metadata: $metadata, content: $content, index: $index)';
   }
 
   @override
@@ -155,16 +167,15 @@ class _$_FileChunk implements _FileChunk {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FileChunk &&
-            (identical(other.transferMetadata, transferMetadata) ||
-                other.transferMetadata == transferMetadata) &&
+            (identical(other.metadata, metadata) ||
+                other.metadata == metadata) &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.index, index) || other.index == index));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, transferMetadata, content, index);
+  int get hashCode => Object.hash(runtimeType, metadata, content, index);
 
   @JsonKey(ignore: true)
   @override
@@ -182,18 +193,21 @@ class _$_FileChunk implements _FileChunk {
 
 abstract class _FileChunk implements FileChunk {
   factory _FileChunk(
-      {required final TransferMetadata transferMetadata,
-      required final String content,
-      required final int index}) = _$_FileChunk;
+      {@JsonKey(name: 'mtd') required final TransferMetadata metadata,
+      @JsonKey(name: 'ctn') required final String content,
+      @JsonKey(name: 'i') required final int index}) = _$_FileChunk;
 
   factory _FileChunk.fromJson(Map<String, dynamic> json) =
       _$_FileChunk.fromJson;
 
   @override
-  TransferMetadata get transferMetadata;
+  @JsonKey(name: 'mtd')
+  TransferMetadata get metadata;
   @override
+  @JsonKey(name: 'ctn')
   String get content;
   @override
+  @JsonKey(name: 'i')
   int get index;
   @override
   @JsonKey(ignore: true)

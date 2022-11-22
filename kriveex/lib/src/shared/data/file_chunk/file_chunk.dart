@@ -7,9 +7,9 @@ part 'file_chunk.g.dart';
 @freezed
 class FileChunk with _$FileChunk {
   factory FileChunk({
-    required TransferMetadata transferMetadata,
-    required String content,
-    required int index,
+    @JsonKey(name: 'mtd') required TransferMetadata metadata,
+    @JsonKey(name: 'ctn') required String content,
+    @JsonKey(name: 'i') required int index,
   }) = _FileChunk;
 
   factory FileChunk.fromJson(Map<String, dynamic> json) => _$FileChunkFromJson(json);

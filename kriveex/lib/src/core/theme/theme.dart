@@ -19,45 +19,9 @@ class AppTheme {
         fontSize: Dimens.h2TextSize,
         color: color,
       ),
-      headline3: TextStyle(
-        fontWeight: FontWeight.w800,
-        fontSize: Dimens.h3TextSize,
-        color: color,
-      ),
-      headline4: TextStyle(
-        fontWeight: FontWeight.w700,
-        fontSize: Dimens.h4TextSize,
-        color: color,
-      ),
-      headline5: TextStyle(
-        fontSize: Dimens.h4TextSize,
-        color: color,
-      ),
-//headline6 est utilisé pour les barres de titre
-      headline6: TextStyle(
-        fontWeight: FontWeight.w800,
-        fontSize: Dimens.h2TextSize,
-        color: color,
-      ),
       bodyText2: TextStyle(
         fontWeight: FontWeight.w500,
         fontSize: Dimens.textSize,
-        color: color,
-      ),
-      bodyText1: TextStyle(
-        fontWeight: FontWeight.w800,
-        fontSize: Dimens.textSize,
-        fontStyle: FontStyle.normal,
-        letterSpacing: -0.1,
-        color: color,
-      ),
-      subtitle1: TextStyle(
-        fontWeight: FontWeight.w500,
-        fontSize: Dimens.subtitleTextSize,
-        color: color,
-      ),
-      subtitle2: TextStyle(
-        fontSize: Dimens.subtitleTextSize,
         color: color,
       ),
     );
@@ -83,85 +47,17 @@ class AppTheme {
       useMaterial3: true,
       colorScheme: colorScheme,
       primaryColor: colorScheme.primary,
-      primaryColorDark: colors.primaryDark,
       disabledColor: colors.disabled,
       backgroundColor: colorScheme.background,
       scaffoldBackgroundColor: colorScheme.background,
       cardColor: colorScheme.surface,
       appBarTheme: AppBarTheme(
         centerTitle: false,
+        titleTextStyle: textTheme.headline2,
         elevation: Dimens.elevation,
-        backgroundColor: colors.appBarColor,
-        foregroundColor: colors.onAppBarColor,
-        titleTextStyle: textTheme.headline3?.copyWith(color: colors.onAppBarColor),
-        systemOverlayStyle: const SystemUiOverlayStyle(
+        systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
-          statusBarIconBrightness: Brightness.light,
-        ),
-      ),
-      dividerTheme: DividerThemeData(
-        color: colorScheme.surface,
-        thickness: 2.0,
-      ),
-      snackBarTheme: SnackBarThemeData(
-        backgroundColor: colorScheme.onBackground,
-        elevation: Dimens.elevation,
-        behavior: SnackBarBehavior.floating,
-        contentTextStyle: textTheme.bodyText2?.copyWith(
-          color: colorScheme.background,
-        ),
-        actionTextColor: colorScheme.primary,
-      ),
-      cardTheme: CardTheme(
-        margin: EdgeInsets.zero,
-        color: colorScheme.surface,
-        elevation: 0.0,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimens.radius)),
-      ),
-      drawerTheme: DrawerThemeData(
-        elevation: Dimens.elevation,
-        backgroundColor: colorScheme.background,
-      ),
-      inputDecorationTheme: InputDecorationTheme(
-        contentPadding: const EdgeInsets.all(Dimens.spacing),
-        labelStyle: MaterialStateTextStyle.resolveWith(
-          (Set<MaterialState> states) => TextStyle(
-            fontSize: Dimens.subtitleTextSize,
-            color: states.contains(MaterialState.disabled) ? colors.disabled : colorScheme.secondary,
-          ),
-        ),
-        prefixStyle: TextStyle(
-          fontSize: Dimens.subtitleTextSize,
-          color: colors.secondary,
-        ),
-        errorStyle: TextStyle(
-          fontSize: Dimens.subtitleTextSize,
-          color: colors.error,
-        ),
-        errorMaxLines: 3,
-        border: OutlineInputBorder(
-          borderSide: BorderSide(color: colors.secondary),
-          borderRadius: const BorderRadius.all(Radius.circular(Dimens.smallRadius)),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: colors.secondary),
-          borderRadius: const BorderRadius.all(Radius.circular(Dimens.smallRadius)),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: colors.error),
-          borderRadius: const BorderRadius.all(Radius.circular(Dimens.smallRadius)),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: colors.error, width: 2),
-          borderRadius: const BorderRadius.all(Radius.circular(Dimens.smallRadius)),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: colors.primary, width: 2),
-          borderRadius: const BorderRadius.all(Radius.circular(Dimens.smallRadius)),
-        ),
-        disabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: colors.disabled),
-          borderRadius: const BorderRadius.all(Radius.circular(Dimens.smallRadius)),
+          statusBarIconBrightness: brightness == Brightness.light ? Brightness.dark : Brightness.dark,
         ),
       ),
       primaryTextTheme: textTheme.apply(

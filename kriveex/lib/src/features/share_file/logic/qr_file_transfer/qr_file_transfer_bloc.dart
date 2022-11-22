@@ -7,7 +7,7 @@ import 'package:kriveex/src/shared/data/file_chunk/file_chunk.dart';
 import 'package:kriveex/src/shared/data/transfer_metadata/transfer_metadata.dart';
 import 'package:kriveex/src/shared/services/qr_file_transfer_service.dart';
 
-const Duration _perFrameDelay = Duration(seconds: 2);
+const Duration _perFrameDelay = Duration(milliseconds: 1500);
 
 class QrFileTransferBloc extends Bloc<QrFileTransferEvent, QrFileTransferState> {
   final QrFileTransferService qrFileTransferService;
@@ -43,12 +43,12 @@ class QrFileTransferBloc extends Bloc<QrFileTransferEvent, QrFileTransferState> 
       final rawChunk = event.rawChunks.elementAt(index);
       final TransferMetadata transferMetadata = TransferMetadata(
         progress: index == event.rawChunks.length - 1 ? 100 : (index / event.rawChunks.length) * 100,
-        totalChunks: event.rawChunks.length,
-        fileName: event.file.name,
+        total: event.rawChunks.length,
+        name: event.file.name,
         fileExtension: event.file.extension ?? '',
       );
       final FileChunk chunk = FileChunk(
-        transferMetadata: transferMetadata,
+        metadata: transferMetadata,
         content: rawChunk,
         index: index,
       );

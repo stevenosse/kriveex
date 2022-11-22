@@ -47,30 +47,37 @@ class _ReceiveFileScreenState extends State<ReceiveFileScreen> {
                 listener: (context, state) {
                   state.whenOrNull(
                     chunkReceived: (chunks) {
-                      if (chunks.last.transferMetadata.progress == 100) {
+                      if (chunks.last.metadata.progress == 100) {
                         _controller.stop();
                         context.read<QrFileReceiverBloc>().add(TransferFinishedEvent(chunks: chunks));
                       }
                     },
-                    transferFinished: (file) {},
+                    transferFinished: (path, file, chunks) {
+                      // TODO: create file
+                    },
                   );
                 },
                 builder: (context, state) {
-                  return const Text('Transfert terminé');
                   return state.maybeWhen(
-                    transferFinished: (file) {
-                      return const Text('Transfert terminé');
+                    transferFinished: (path, file, chunks) {
+                      return Column(
+                        children: [
+                          const Text('Transfert terminé'),
+                          Text('${chunks.length}/${chunks.first.metadata.total} paquets reçus.')
+                        ],
+                      );
+                    },
+                    transferFailed: (chunks) {
+                      return Text('Echec: ${chunks.length}/${chunks.first.metadata.total} paquets reçus');
                     },
                     chunkReceived: (chunks) {
-                      final double progress = chunks.map((e) => e.transferMetadata.progress).reduce(max);
+                      final double progress = chunks.map((e) => e.metadata.progress).reduce(max);
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: Dimens.spacing),
                         child: Row(
                           children: [
                             Expanded(
-                              child: LinearProgressIndicator(
-                                value: progress / 100,
-                              ),
+                              child: LinearProgressIndicator(value: progress / 100),
                             ),
                             Text('${progress.toStringAsFixed(2)} %')
                           ],

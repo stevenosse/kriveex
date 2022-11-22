@@ -13,6 +13,12 @@ class QrFileReceiverState with _$QrFileReceiverState {
   }) = _ChunkReceived;
 
   factory QrFileReceiverState.transferFinished({
+    String? path,
     required PlatformFile file,
+    required List<FileChunk> chunks,
   }) = _TransferFinished;
+
+  factory QrFileReceiverState.transferFailed({
+    required List<FileChunk> chunks,
+  }) = _TransferFailed;
 }
